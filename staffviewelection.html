@@ -1,0 +1,24 @@
+{% include 'staff_header.html' %}
+<center>
+		<form method="post">
+	<h1>view election</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>title</th>
+		<th>election_date</th>
+		<th>voting_status</th>
+		</tr>
+	{% for row in data['election'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['title']}}</td>
+		<td>{{row['election_date']}}</td>
+		<td>{{row['voting_status']}}</td>
+		<td><a href="staffviewresult?eid={{row['election_id']}}">view result</a></td>
+		<td><a href="staff_manage_candidates?eid={{row['election_id']}}">Candidates</a></td>
+    </tr>
+	{% endfor %}
+</table>
+</center>
+{% include'footer.html' %}

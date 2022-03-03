@@ -1,0 +1,53 @@
+{%include 'staff_header.html'%}
+<center>
+	<form method="post">
+		{% if data['cat'] %}
+		<h1>update category</h1>
+		<table>
+			<tr>
+				<th>category name</th>
+				<td>
+					<input type="text" name="category" value="{{data['cat'][0]['category_name']}}">
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE"></td>
+			</tr>
+		</table>
+		{% else %}
+
+		<h1>manage category</h1>
+		<table>
+			<tr>
+				<th>category name</th>
+				<td>
+					<input type="text" name="category">
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="submit"></td>
+			</tr>
+		</table>
+		{% endif %}
+	</form>
+	<h1>View Category</h1>
+	<table>
+		<tr>
+			<th>Category name</th>
+		</tr>
+		{% for row in data['category'] %}
+		<tr>
+			<td>{{row['category_name']}}</td>
+			<td><a href="?action=delete&id={{row['category_id']}}">delete</a></td>
+			<td><a href="?action=update&id={{row['category_id']}}">update</a></td>
+
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}
+	
+
+
+
+

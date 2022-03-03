@@ -1,0 +1,82 @@
+{% include 'staff_header.html' %}
+<center>
+	<form method="post">
+		{% if data['candi'] %}
+		<h1>update candidates</h1>
+		<table>
+			<tr>
+				<th>select candidate</th>
+				<td>
+					<select name="sname">
+						<option>select candidate</option>
+						{% for row in data['stud'] %}
+						<option value="{{row['student_id']}}">{{row['first_name']}} {{row['last_name']}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE"></td>
+			</tr>
+		</table>
+		{% else %}
+
+		<h1>manage candidates</h1>
+		<table>
+			<tr>
+				<th>Select Post</th>
+				<td>
+					<select name="cat_id">
+						<option>Select Post</option>
+						{% for row in data['categ'] %}
+						<option value="{{row['category_id']}}">{{row['category_name']}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>select candidate</th>
+				<td>
+					<select name="sname">
+						<option>select candidate</option>
+						{% for row in data['stud'] %}
+						<option value="{{row['student_id']}}">{{row['first_name']}} {{row['last_name']}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="submit"></td>
+			</tr>
+		</table>
+		{% endif %}
+	</form>
+
+		<h1>view candidates</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>Post</th>
+		<th>student name</th>
+		<th>title</th>
+		<th>election date</th>
+		<th>voting_status</th>
+		<th>candidate_status</th>
+		</tr>
+	{% for row in data['candidates'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{ row['category_name'] }}</td>
+		<td>{{row['first_name']+ " " +row['last_name']}}</td>
+		<td>{{row['title']}}</td>
+		<td>{{row['election_date']}}</td>
+        <td>{{row['voting_status']}}</td>
+        <td>{{row['candidate_status']}}</td>
+        <td><a href="?action=delete&id={{row['candidate_id']}}&eid={{data['eid']}}">delete</a>
+			</td>
+			<td><a href="?action=update&id={{row['candidate_id']}}&eid={{data['eid']}}">update</a>
+    </tr>
+	{% endfor %}
+</table>
+	
+{% include 'footer.html' %}

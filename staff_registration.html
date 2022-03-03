@@ -1,0 +1,39 @@
+{% include 'public_header.html'%}
+<center>
+	<h1>STAFF REGISTRATION</h1>
+	<form method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fname" required pattern="[A-Za-z ]+$"></td>
+			</tr>
+			<th>Last Name</th>
+			<td><input type="text" name="lname" required pattern="[A-Za-z ]+$"></td>
+		</tr>
+ <tr>
+ 	<th>age</th>
+ 	<td><input type="text" name="age" required pattern="[0-9]{2}"></td>
+ </tr>
+ <tr>
+	<th>Phone Number</th>
+	<td><input type="text" name="phn" pattern="[7-9]{1}[0-9]{9}" required></td>
+</tr>
+<tr>
+	<th>email</th>
+	<td><input type="text" name="email" required=""></td>
+</tr>
+<tr>
+	<th>username</th>
+	<td><input type="text" name="uname" minlength="5" placeholder="MUST BE 5 CHARECTER" required></td>
+</tr>
+<tr>
+	<th>Password</th>
+	<td><input type="password" name="pwd" placeholder="MUST BE  8 CHARECTER" minlength="8" required></td>
+</tr>
+<tr>   
+<td align="center" colspan="2"><input type="submit" name="register" value="Register"></td>
+</option>
+
+</body>
+</html>
+{% include 'footer.html'%}
