@@ -1,0 +1,27 @@
+{% include 'student_header.html' %}
+<center>
+		<form method="post">
+	<h1>VIEW ELECTION</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>title</th>
+		<th>election_date</th>
+		<th>voting_status</th>
+		</tr>
+	{% for row in data['election'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['title']}}</td>
+		<td>{{row['election_date']}}</td>
+		<td>{{row['voting_status']}}</td>
+		{% if row['voting_status']=="stop" %}
+			<td><a href="studentviewresult?eid={{row['election_id']}}">view result</a></td>
+		{% elif row['voting_status']=="start" %}
+			<td><a href="studentviewcandidates?eid={{row['election_id']}}">view candidates</a></td>
+		{% endif %}
+		</tr>
+	{% endfor %}
+</table>
+</center>
+{% include'footer.html' %}

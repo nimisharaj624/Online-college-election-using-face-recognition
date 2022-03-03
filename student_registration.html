@@ -1,0 +1,70 @@
+{% include 'public_header.html'%}
+<center>
+	<h1>STUDENT REGISTRATION</h1>
+	<form method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<th>registernumber</th>
+				<td><input type="text" name="regno" required pattern="[0-9]{4}"></td>
+			</tr>
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fname" required pattern="[A-Za-z ]+$"></td>
+			</tr>
+			<th>Last Name</th>
+			<td><input type="text" name="lname" required pattern="[A-Za-z ]+$"></td>
+		</tr>
+		<tr>
+			<th>photo</th>
+			<td><input type="file" name="photo" required></td>
+		</tr>
+		<tr>
+		<th>Course</th>
+		<td>
+	<select name="cname" required> 
+		<option value="mca">MCA</option>
+		<option value="mtech">Mtech</option>
+		<option value="btech">Btech</option>
+		<option value="mba">MBA</option>
+	</select>
+</td>
+</tr>
+<tr>
+	<th>Batch</th>
+	<td><input type="text" name="batch" required></td>
+</tr>
+<tr>
+	<th>Phone Number</th>
+	<td><input type="text" name="phn" pattern="[7-9]{1}[0-9]{9}" required></td>
+</tr>
+<tr>
+	<th>email</th>
+	<td><input type="email" name="email" required=""></td>
+</tr>
+<tr>
+			<th>photo</th>
+			<td><input type="file" name="image1" required></td>
+		</tr>
+		<tr>
+			<th>photo</th>
+			<td><input type="file" name="image2" required></td>
+		</tr>
+		<tr>
+			<th>photo</th>
+			<td><input type="file" name="image3" required></td>
+		</tr>
+<tr>
+	<th>username</th>
+	<td><input type="text" name="uname" minlength="5" placeholder="MUST BE 5 CHARECTER" required></td>
+</tr>
+<tr>
+	<th>Password</th>
+	<td><input type="text" name="pwd" placeholder="MUST BE  8 CHARECTER" minlength="8" required></td>
+</tr>
+<tr>   
+<td align="center" colspan="2"><input type="submit" name="register" value="Register"></td>
+</option>
+
+</body>
+</html>
+{% include 'footer.html'%}
