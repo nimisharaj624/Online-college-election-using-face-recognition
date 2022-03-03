@@ -1,0 +1,54 @@
+{% include 'admin_header.html' %}
+<center>
+	<form method="post">
+		<h1>manage publish result</h1>
+		<table>
+			<tr>
+				<th>select candidate</th>
+				<td>
+					<select name="candidate">
+						<option>select student</option>
+						{% for row in data['candid'] %}
+						<option value="{{row['candidate_id']}}">{{row['first_name']}} {{row['last_name']}}</option>
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>Number of votes</th>
+				<td><input type="text" name="votes"></td>
+			</tr>
+				<tr>
+            <td align="center" colspan="2"><input type="submit" name="submit" value="submit"></td>
+			</tr>
+		</table>
+	</form>
+	<center>
+		<form method="post">
+	<h1>VIEW RESULT</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>title</th>
+		<th>election date</th>
+		<th>voting_status</th>
+		<th>candidate_status</th>
+		<th>number of votes</th>
+		</tr>
+	{% for row in data['results'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['title']}}</td>
+		<td>{{row['election_date']}}</td>
+        <td>{{row['voting_status']}}</td>
+        <td>{{row['candidate_status']}}</td>
+        <td>{{row['number of votes']}}</td>
+		</tr>
+	{% endfor %}
+</table>
+</center>
+	
+
+
+
+

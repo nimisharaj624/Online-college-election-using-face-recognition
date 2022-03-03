@@ -1,0 +1,65 @@
+{% include 'admin_header.html' %}
+<center>
+	<form method="post">
+{% if data['ele'] %}
+<h1>update election</h1>
+	<table >
+		<tr>
+			<th>title</th>
+			<td><input type="text" name="title" value="{{data['ele'][0]['title']}}"></td>
+		</tr>
+		<tr>
+			<th>election date</th>
+			<td><input type="date" name="edate" value="{{data['ele'][0]['election_date']}}"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update"></td>
+		</tr>
+	</table>
+{% else %}
+	<h1>manage election</h1>
+	<table border="50">
+		<tr>
+			<th>title</th>
+			<td><input type="text" name="title"></td>
+		</tr>
+		<tr>
+			<th>election date</th>
+			<td><input type="date" name="edate"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="manage"></td>
+		</tr>
+	</table>
+	{% endif %}
+</form>
+<h1>view election</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>title</th>
+		<th>election date</th>
+		<th>status</th>
+	</tr>
+	{% for row in data['election'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['title']}}</td>
+		<td>{{row['election_date']}}</td>
+		<td>{{row['voting_status']}}</td>
+		<td><a href="?action=delete&id={{row['election_id']}}">delete</a>
+			</td>
+			<td><a href="?action=update&id={{row['election_id']}}">update</a>
+
+			</td>
+			
+			<td><a href="adminpublishresult?eid={{row['election_id']}}">publish result</a></td>
+			<td>
+			<a href="?action1=start&eid={{row['election_id']}}">start</a>
+			<a href="?action1=stop&eid={{row['election_id']}}">stop</a>
+		</td>
+			</tr>
+	</tr>
+	{% endfor %}
+</table>
+{% include 'footer.html' %}

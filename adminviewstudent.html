@@ -1,0 +1,32 @@
+{% include 'admin_header.html' %}
+<center>
+		<form method="post">
+	<h1>view student</h1>
+<table border="50">
+	<tr>
+		<th>slno</th>
+		<th>register_number</th>
+		<th>first_name</th>
+		<th>last_name</th>
+		<th>photo</th>
+		<th>course</th>
+		<th>batch</th>
+		<th>phone_number</th>
+		<th>email</th>
+	</tr>
+	{% for row in data['st'] %}
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['register_number']}}</td>
+		<td>{{row['first_name']}}</td>
+		<td>{{row['last_name']}}</td>
+		<td><img src="/{{row['photo']}}" height="100" width="100"></td>
+		<td>{{row['course']}}</td>
+		<td>{{row['batch']}}</td>
+		<td>{{row['phone_number']}}</td>
+		<td>{{row['email']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+{% include'footer.html' %}
